@@ -1,7 +1,7 @@
 version: '3'
 services:
     oxio-golang-protoc-version:
-        image: oxio/golang-protoc:1.0
+        image: oxio/golang-protoc:1.1
         container_name: oxio/golang-protoc
         build:
             context: .
