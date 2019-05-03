@@ -1,7 +1,7 @@
 version: '3'
 services:
     oxio-golang-version:
-        image: oxio/golang:1.0
+        image: oxio/golang:1.1
         container_name: oxio/golang
         build: .
     oxio-golang-latest:
