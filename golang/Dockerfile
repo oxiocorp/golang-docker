@@ -12,9 +12,10 @@ RUN apk add --no-cache --update \
 # Git setup to enable having private github.com repos as dependencies
 RUN mkdir /root/.ssh && \
     chmod 0700 /root/.ssh && \
-    echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config && \
     ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts && \
-    git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+    ssh-keyscan -t rsa gitlab.com >> /root/.ssh/known_hosts && \
+    git config --global --add url."git@github.com:".insteadOf "https://github.com/" && \
+    git config --global --add url."git@gitlab.com:".insteadOf "https://gitlab.com/"
 
 # RSA keys can then be added like such:
 # - COPY id_rsa /root/.ssh/id_rsa
