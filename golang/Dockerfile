@@ -1,9 +1,10 @@
-FROM golang:1.11-alpine3.8
+FROM golang:1.13-alpine3.10
 
 # Dependencies
 RUN apk add --no-cache --update \
     bash \
     git \
+    mercurial \
     make \
     openssh-client \
     gcc \
