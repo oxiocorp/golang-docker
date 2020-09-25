@@ -8,7 +8,8 @@ RUN apk add --no-cache --update \
     make \
     openssh-client \
     gcc \
-    libc-dev
+    libc-dev \
+    tzdata
 
 # Git setup to enable having private github.com repos as dependencies
 RUN mkdir /root/.ssh && \
