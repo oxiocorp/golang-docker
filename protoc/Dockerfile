@@ -14,7 +14,7 @@ RUN apk add --no-cache --update \
     glibc-2.28-r0.apk
 
 # Protobuf
-ARG protobuf_version
+ARG protobuf_version=3.5.1
 ADD https://github.com/protocolbuffers/protobuf/releases/download/v${protobuf_version}/protoc-${protobuf_version}-linux-x86_64.zip .
 RUN unzip protoc-${protobuf_version}-linux-x86_64.zip && \
     mv bin/protoc /usr/local/bin/ && \
