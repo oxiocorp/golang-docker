@@ -14,6 +14,6 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build & push the golang Docker image
-      run: VERSION=$(echo '${{ github.ref }}'| cut -d'/' -f4); cd golang && docker build . --tag "oxio/golang:latest" --tag "oxio/golan:$VERSION"
+      run: VERSION=$(echo '${{ github.ref }}'| cut -d'/' -f4); cd golang && docker build . --tag "oxio/golang:latest" --tag "oxio/golang:$VERSION" && git push "oxio/golang:$VERSION" && git push "oxio/golang:latest"
     - name: Build & push the golang-protoc Docker image
-      run: VERSION=$(echo '${{ github.ref }}'| cut -d'/' -f4); cd golang-protoc && docker build . --tag "oxio/golang-protoc:latest" --tag "oxio/golang-protoc:$VERSION"
+      run: VERSION=$(echo '${{ github.ref }}'| cut -d'/' -f4); cd protoc && docker build . --tag "oxio/golang-protoc:latest" --tag "oxio/golang-protoc:$VERSION" && git push "oxio/golang-protoc:$VERSION" && git push "oxio/golang-protoc:latest"
