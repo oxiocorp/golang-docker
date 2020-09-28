@@ -1,0 +1,19 @@
+name: Build Docker images
+on:
+  push:
+    tags:
+      - "release/*"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Build & push the golang Docker image
+      run: VERSION=$(echo '${{ github.ref }}'| cut -d'/' -f4); cd golang && docker build . --tag "oxio/golang:latest" --tag "oxio/golang:$VERSION" && docker push "oxio/golang:$VERSION" && docker push "oxio/golang:latest"
+    - name: Build & push the golang-protoc Docker image
+      run: VERSION=$(echo '${{ github.ref }}'| cut -d'/' -f4); cd protoc && docker build . --tag "oxio/golang-protoc:latest" --tag "oxio/golang-protoc:$VERSION" && docker push "oxio/golang-protoc:$VERSION" && docker push "oxio/golang-protoc:latest"
