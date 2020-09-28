@@ -9,4 +9,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the golang-protoc Docker image
-      run: VERSION=$(echo '${{ github.ref }}'| cut -d'/' -f2) cd golang && docker build . --tag "oxio/golang-protoc:latest" --tag "oxio/golang-protoc:$VERSION"
+      run: VERSION=$(echo '${{ github.ref }}'| cut -d'/' -f2) cd golang && echo "oxio/golang-protoc:latest" && echo "oxio/golang-protoc:$VERSION"
