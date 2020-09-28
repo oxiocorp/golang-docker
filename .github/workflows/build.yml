@@ -1,0 +1,12 @@
+name: Build Docker images
+on:
+  push:
+    tags:
+      - "release/*"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the golang-protoc Docker image
+      run: VERSION=$(echo '${{ github.ref }}'| cut -d'/' -f2) cd golang && docker build . --tag "oxio/golang-protoc:latest" --tag "oxio/golang-protoc:$VERSION"
