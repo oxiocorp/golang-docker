@@ -1,4 +1,4 @@
-FROM oxio/golang:1.3
+FROM oxio/golang:1.4
 
 # Moving to installation workdir
 RUN mkdir -p /opt/setup

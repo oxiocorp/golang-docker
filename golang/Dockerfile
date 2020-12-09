@@ -1,4 +1,4 @@
-FROM golang:1.13-alpine3.10
+FROM golang:1.15-alpine3.12
 
 # Dependencies
 RUN apk add --no-cache --update \
